@@ -1,6 +1,6 @@
 .main {
     display: grid;
-    /* grid-column-gap: 2rem */
+    grid-column-gap: 2rem;
     grid-row-gap: 1rem;
     grid-template-rows: [header] 250px [body] auto;
     grid-template-columns: [left-gutter] 1fr [leftCol] 6fr [rightCol] 6fr [sidebar] 6fr [right-gutter] 1fr;
