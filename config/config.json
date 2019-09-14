@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "iamgroot",
     "database": "guru",
     "host": "localhost",
     "port": 3306,
