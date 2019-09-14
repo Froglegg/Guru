@@ -6,15 +6,6 @@ $color-5: #b77835;
 $color-6: #cf5e01;
 $color-7: #e87d07;
 $text-color: rgb(38, 38, 54);
-body {
-    // Minimum 16x, and grows more slowly 
-    // (half the rate of screen growth)
-    font-size: calc(16px + 0.5vw);
-    // Line-height based on font-size,
-    // with addition viewport-relative growth
-    line-height: calc(1.1em + 0.5vw);
-}
-
 h1 {
     // Grows more quickly, 
     // allowing for wider variation on larger screens
@@ -35,22 +26,30 @@ p {
 }
 
 .main {
+    height: 100vh;
     display: grid;
     grid-column-gap: 2rem;
     grid-row-gap: 1rem;
     grid-template-rows: [topbar-row] 10vh [body] 90vh;
     grid-template-columns: [sidebar] 1fr [main] 5fr;
+    // Minimum 16x, and grows more slowly 
+    // (half the rate of screen growth)
+    font-size: calc(16px + 0.5vw);
+    // Line-height based on font-size,
+    // with addition viewport-relative growth
+    line-height: calc(1.1em + 0.5vw);
 }
 
 .topbar {
     grid-row: topbar-row;
-    grid-column: span 2;
+    grid-column: sidebar + main;
     display: flex;
     background-color: $color-6;
     position: fixed;
     width: 100vw;
     height: 10vh;
-    /* opacity: 0; */
+    opacity: 0;
+    z-index: 1;
 }
 
 .topbar h1 {
@@ -67,7 +66,9 @@ p {
     position: fixed;
     grid-row: body;
     grid-column: sidebar;
-    border-right: 2px black solid;
+    background-color: rgba(165, 101, 42, 0.493);
+    border-right: 2px $text-color solid;
+    opacity: 0;
 }
 
 .sidebar h2 {
@@ -82,8 +83,9 @@ p {
     flex-direction: column;
     grid-row: body;
     grid-column: main;
-    margin: 0rem 2rem 0rem 2rem;
+    margin: 0rem 2rem 2rem 2rem;
     padding: 0 1vw 0 1vw;
+    opacity: 0;
 }
 
 .mainview h2 {
