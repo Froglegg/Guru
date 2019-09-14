@@ -2,8 +2,9 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "exampledb",
+    "database": "guru",
     "host": "localhost",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
