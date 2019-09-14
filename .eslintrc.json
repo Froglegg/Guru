@@ -27,7 +27,7 @@
             2
         ],
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
