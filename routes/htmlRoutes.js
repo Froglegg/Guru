@@ -1,9 +1,10 @@
 var path = require("path");
+var db = require("../models");
 
 module.exports = function(app) {
     // Load index page
     app.get("/", function(req, res) {
-        db.Questions.findAll({}).then(function(dbQuestions) {
+        db.questions.findAll({}).then(function(dbQuestions) {
             res.render("index", {
                 msg: "Welcome!",
                 style: ["normalize.css", "styles.css", "colors.css"],
