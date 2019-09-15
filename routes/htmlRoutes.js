@@ -23,11 +23,11 @@ module.exports = function(app) {
             });
         });
 
-        // db.responses.findAll({}).then(result => {
-        //     res.render("question-view", {
-        //         responses: result
-        //     });
-        // });
+        db.responses.findAll({}).then(result => {
+            res.render("question-view", {
+                responses: result
+            });
+        });
 
     });
 
