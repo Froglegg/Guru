@@ -3,12 +3,12 @@ module.exports = function(sequelize, DataTypes) {
         employeeName: DataTypes.STRING,
         body: DataTypes.TEXT,
     });
-    Responses.associate = function(models) {
-        Responses.belongsTo(models.questions, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+
+    // Responses.associate = function(models) {
+    //     Responses.belongsTo(models.questions, {
+    //         foreignKey: "QuestionId"
+    //     });
+    // };
+
     return Responses;
 };
