@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Question View</h5>
+          <p>
+            <strong>Employee Name</strong>: {{question.employeeName}}</p>
+          <p>
+          <p>
+            <strong>Subject</strong>: {{question.subject}}</p>
+          <p>
+            <p>
+            <strong>Body</strong>: {{question.body}}</p>
+          <p>
+            <p>
+            <strong>Status</strong>: {{question.status}}</p>
+                    <h3>ALL responses:</h3>
+          {{#each responses}}
+          <div class="response-block">
+            {{> responses/response-block }}
+          </div>
+          {{/each}}
+          <h3>Create new response</h3>
+            <form class="clearfix mb-4" id="response-form" action="POST">
+          <div class="form-group">
+            <label for="response-text">Write response below</label>
+            <textarea class="form-control" id="response-text" aria-describedby="response-text" placeholder="Enter Response"></textarea>
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+          
+            <a href="/">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="/js/question-view.js"></script>
+
+

@@ -7,32 +7,40 @@
   </div>
   <div class="main-view slide-left-2"> 
             <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+        <h2>Welcome to the index!</h2>
+        <form class="clearfix mb-4" id="create-form" action="POST">
+                    <div class="form-group">
+            <label for="employee-text">Employee name</label>
+            <input type="text" id="employee-text" class="form-control" aria-describedby="employee-text" placeholder="Your name">
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <label for="subject-text">Subject</label>
+            <input type="text" id="subject-text" class="form-control" aria-describedby="subject-text" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <label for="question-text">What is your question?</label>
+            <textarea class="form-control" id="question-text" aria-describedby="question-text" placeholder="Enter Question"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
+        <h3>All Questions:</h3>
+        <ul id="question-list" class="list-group">
+          <!-- using partials will allows us to separate the questions on the main view using handlebars if statements, pulling all questions for now -->
           {{#each questions}}
-          <li data-id="{{this.employeeName}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.body}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
+          <div class="question-block">
+            {{> questions/question-block }}
+          </div>
           {{/each}}
         </ul>
 
   </div>
-
+  {{!-- {{#each burgers}}
+    {{#if devoured}}
+      <div class="burger-item">{{> burgers/burger-block devoured=true}}</div>
+    {{/if}}
+  {{/each}} --}}
 
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+  <script src="/js/index.js"></script>

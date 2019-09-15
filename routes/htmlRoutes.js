@@ -13,13 +13,30 @@ module.exports = function(app) {
         });
     });
 
-    // Load example page and pass in an example by id
-    app.get("/example/:id", function(req, res) {
-        db.Example.findOne({ where: { id: req.params.id } }).then(function(
-            dbExample
+    // get specific question to load question view
+    app.get("/questions/:id", function(req, res) {
+        db.questions.findOne({ where: { id: req.params.id } }).then(function(
+            questionView
         ) {
-            res.render("example", {
-                example: dbExample
+            res.render("question-view", {
+                question: questionView,
+            });
+        });
+
+        db.responses.findAll({}).then(result => {
+            res.render("question-view", {
+                responses: result
+            });
+        });
+
+    });
+
+    app.get("/responses/:id", function(req, res) {
+        db.responses.findOne({ where: { id: req.params.id } }).then(function(
+            responseView
+        ) {
+            res.render("response-view", {
+                response: responseView
             });
         });
     });
@@ -29,4 +46,3 @@ module.exports = function(app) {
         res.render("404");
     });
 };
-
