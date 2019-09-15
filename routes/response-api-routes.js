@@ -15,6 +15,17 @@ module.exports = function(app) {
         });
     });
 
+    // Get one response
+    app.get("/api/responses/:id", function(req, res) {
+        db.responses.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbResponse) {
+            res.json(dbResponse);
+        });
+    });
+
     // update response, work in progress
 
     app.put("/api/responses/:id", function(req, res, next) {
@@ -34,7 +45,7 @@ module.exports = function(app) {
     });
 
 
-    // Delete an response by id
+    // Delete a response by id
     app.delete("/api/responses/:id", function(req, res) {
         db.responses.destroy({ where: { id: req.params.id } }).then(function(
             dbResponse
@@ -42,4 +53,5 @@ module.exports = function(app) {
             res.json(dbResponse);
         });
     });
+
 };

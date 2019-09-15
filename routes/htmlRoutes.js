@@ -29,7 +29,6 @@ module.exports = function(app) {
             });
     });
 
-
     app.get("/responses/:id", function(req, res) {
         db.responses.findOne({ where: { id: req.params.id } }).then(result => {
             res.render("response-view", {

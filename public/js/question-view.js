@@ -2,6 +2,8 @@
 let $responseText = $("#response-text");
 let $submitBtn = $("#submit");
 let $responseList = $("#response-list");
+var $questionId = $("#question-id");
+
 
 // regex validate helper function, no empty strings 
 function validate(element) {
@@ -86,8 +88,10 @@ let handleFormSubmit = function(event) {
     event.preventDefault();
     console.log('submit form fired');
 
+
     var newResponse = {
-        body: $("#response-text").val().trim()
+        body: $("#response-text").val().trim(),
+        questionId: $questionId.attr("data-id")
     };
     console.log(`new response is ${newResponse.body}`);
     // eventually, validate input here with same rules as validation in the DB. If true, then send ajax post, if false, then throw up an alert
@@ -116,7 +120,7 @@ var handleDeleteBtnClick = function() {
         .parent()
         .attr("data-id");
 
-    API.deleteQuestion(idToDelete).then(function() {
+    API.deleteResponse(idToDelete).then(function() {
         refreshResponses();
     });
 };
