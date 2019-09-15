@@ -26,16 +26,6 @@ module.exports = function(app) {
         }).then(function(dbquestion) {
             res.json(dbquestion);
         });
-        // // find all responses related to that question
-        // db.responses.findAll({
-        //     // where: {
-        //     //     questionId: req.params.id
-        //     // }
-        // }).then(responses => {
-        //     res.json({
-        //         responses: responses
-        //     });
-        // });
     });
 
     // update feature, work in progress

@@ -1,4 +1,4 @@
-var path = require("path");
+// var path = require("path");
 var db = require("../models");
 
 module.exports = function(app) {
@@ -13,31 +13,29 @@ module.exports = function(app) {
         });
     });
 
-    // get specific question to load question view
     app.get("/questions/:id", function(req, res) {
-        db.questions.findOne({ where: { id: req.params.id } }).then(function(
-            questionView
-        ) {
-            res.render("question-view", {
-                question: questionView,
+        db.questions
+            .findOne({ where: { id: req.params.id } })
+            .then(function(dbQuestions) {
+                db.responses
+                    .findAll({ where: { questionId: req.params.id } })
+                    .then(function(dbResponses) {
+                        res.render("question-view", {
+                            question: dbQuestions,
+                            responses: dbResponses,
+                            style: ["normalize.css", "styles.css", "colors.css"]
+                        });
+                    });
             });
-        });
-
-        db.responses.findAll({}).then(result => {
-            res.render("question-view", {
-                responses: result
-            });
-        });
-
     });
 
     app.get("/responses/:id", function(req, res) {
-        db.responses.findOne({ where: { id: req.params.id } }).then(function(
-            responseView
-        ) {
+        db.responses.findOne({ where: { id: req.params.id } }).then(result => {
             res.render("response-view", {
-                response: responseView
+                response: result
             });
+        }).catch(err => {
+            console.log(`error! ${err.message}`);
         });
     });
 
@@ -45,4 +43,4 @@ module.exports = function(app) {
     app.get("*", function(req, res) {
         res.render("404");
     });
-};
+}

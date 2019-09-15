@@ -4,6 +4,7 @@
       <div class="card mt-4">
         <div class="card-body">
           <h5 class="card-title">Question View</h5>
+          <strong id="question-id" data-id="{{question.id}}">Question ID</strong>: {{question.id}}</p>
           <p>
             <strong>Employee Name</strong>: {{question.employeeName}}</p>
           <p>
@@ -16,11 +17,14 @@
             <p>
             <strong>Status</strong>: {{question.status}}</p>
                     <h3>ALL responses:</h3>
+           <ul id="response-list" class="list-group">
+
           {{#each responses}}
           <div class="response-block">
             {{> responses/response-block }}
           </div>
           {{/each}}
+          </ul>
           <h3>Create new response</h3>
             <form class="clearfix mb-4" id="response-form" action="POST">
           <div class="form-group">

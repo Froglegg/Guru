@@ -7,9 +7,21 @@ module.exports = function(app) {
             res.json(dbResponse);
         });
     });
+
     // Get all responses
     app.get("/api/responses", function(req, res) {
         db.responses.findAll({}).then(function(dbResponse) {
+            res.json(dbResponse);
+        });
+    });
+
+    // Get one response
+    app.get("/api/responses/:id", function(req, res) {
+        db.responses.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbResponse) {
             res.json(dbResponse);
         });
     });
@@ -33,7 +45,7 @@ module.exports = function(app) {
     });
 
 
-    // Delete an response by id
+    // Delete a response by id
     app.delete("/api/responses/:id", function(req, res) {
         db.responses.destroy({ where: { id: req.params.id } }).then(function(
             dbResponse
@@ -41,4 +53,5 @@ module.exports = function(app) {
             res.json(dbResponse);
         });
     });
+
 };

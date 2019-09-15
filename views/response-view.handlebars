@@ -6,18 +6,21 @@
           <h5 class="card-title">Response View</h5>
           
           <p>
-            <strong>Response</strong>: {{Responses.responseId}}</p>
-          <p>
-          <p>
-            <strong>Employee Name</strong>: {{Responses.employeeName}}</p>
+            <strong>Response</strong>: {{response.id}}</p>
           <p>
             <p>
-            <strong>Question Id</strong>: {{Responses.questionId}}</p>
+            <strong>Question Id</strong>: <div id="questionId">{{response.questionId}}</div></p>
+          <p>
+
+                        <p>
+            <strong>Response</strong>: {{response.body}}</p>
           <p>
         
-            <a href="/">← Back To Home</a>
+            <a id="backButton" href="">← Back To Question</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+  <script src="/js/response-view.js"></script>
