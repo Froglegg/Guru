@@ -7,6 +7,7 @@ module.exports = function(app) {
             res.json(dbResponse);
         });
     });
+
     // Get all responses
     app.get("/api/responses", function(req, res) {
         db.responses.findAll({}).then(function(dbResponse) {

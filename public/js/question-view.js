@@ -12,7 +12,6 @@ function validate(element) {
         return false;
     }
 }
-
 // The API object contains methods for each kind of request we'll make
 let API = {
 
@@ -55,7 +54,7 @@ let refreshResponses = function() {
         let $responses = data.map(function(response) {
             console.log('getting responses, supposedly');
             let $a = $("<a>")
-                .text(response.responseText)
+                .text(response.body)
                 .attr("href", "/responses/" + response.id);
 
             let $li = $("<li>")
@@ -88,15 +87,15 @@ let handleFormSubmit = function(event) {
     console.log('submit form fired');
 
     var newResponse = {
-        responseText: $("#response-text").val().trim()
+        body: $("#response-text").val().trim()
     };
-    console.log(`new response is ${newResponse.responseText}`);
+    console.log(`new response is ${newResponse.body}`);
     // eventually, validate input here with same rules as validation in the DB. If true, then send ajax post, if false, then throw up an alert
-    Object.keys(newResponse.responseText).forEach(element =>
+    Object.keys(newResponse.body).forEach(element =>
         console.log(validate(newResponse[element]))
     );
 
-    if (!(newResponse.responseText)) {
+    if (!(newResponse.body)) {
         alert("You must enter some text!");
         return;
     }

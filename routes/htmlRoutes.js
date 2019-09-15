@@ -13,24 +13,6 @@ module.exports = function(app) {
         });
     });
 
-    // get specific question to load question view
-    // app.get("/questions/:id", function(req, res) {
-    //     db.questions.findOne({ where: { id: req.params.id } }).then(function(
-    //         questionView
-    //     ) {
-    //         res.render("question-view", {
-    //             question: questionView,
-    //         });
-    //     });
-
-    //     db.responses.findAll({}).then(result => {
-    //         res.render("question-view", {
-    //             responses: result
-    //         });
-    //     });
-
-    // });
-
     app.get("/questions/:id", function(req, res) {
         db.questions
             .findOne({ where: { id: req.params.id } })

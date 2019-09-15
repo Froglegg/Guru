@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    // Questions.associate = function(models) {
-    //     Questions.hasMany(models.responses, {
-    //         foreignKey: "QuestionId"
-    //     });
-    // };
+    Questions.associate = function(models) {
+        Questions.hasMany(models.responses, {
+            foreignKey: "QuestionId"
+        });
+    };
 
     return Questions;
 };

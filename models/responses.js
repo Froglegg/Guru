@@ -4,11 +4,11 @@ module.exports = function(sequelize, DataTypes) {
         body: DataTypes.TEXT,
     });
 
-    // Responses.associate = function(models) {
-    //     Responses.belongsTo(models.questions, {
-    //         foreignKey: "QuestionId"
-    //     });
-    // };
+    Responses.associate = function(models) {
+        Responses.belongsTo(models.questions, {
+            foreignKey: "QuestionId"
+        });
+    };
 
     return Responses;
 };
