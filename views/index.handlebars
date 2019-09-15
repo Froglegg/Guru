@@ -5,7 +5,6 @@
   <div class="sidebar slide-left-1">
     <h2>Here is the sidebar</h2>
   </div>
-<<<<<<< HEAD
   <div class="main-view slide-left-2"> 
             <h1>{{msg}}</h1>
         <h2>Welcome to the index!</h2>
@@ -33,44 +32,6 @@
           </div>
           {{/each}}
         </ul>
-=======
-  <div class="main-view slide-left-2">
-    <h1>{{msg}}</h1>
-    <h2>Ask a Question</h2>
-    <form class="clearfix mb-4" action="POST">
-      <div class="form-group">
-        <label for="question-subject">Subject</label>
-        <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject">
-        <label for="question-category">Category</label>
-        <select class="custom-select" id="question-category">
-          <option selected></option>
-          <option value="Resources">Resources</option>
-          <option value="Repairs">Repairs</option>
-          <option value="Coding">Coding</option>
-        </select>
-        <label for="question-body">Ask your question below</label>
-        <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
-      </div>
-      <button id="submit" class="btn btn-primary float-right">Submit</button>
-    </form>
-    <h3>Examples:</h3>
-    <ul id="questions-list" class="list-group">
-      {{#each questions}}
-      <a href="questions/{{this.id}}" style="text-decoration: none; color:black" data-id="{{this.name}}"
-        class="card mb-2">
-        <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
-          <h5 class="mb-1">John Smith</h4>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1 card-body">{{this.body}}</p>
-        {{!-- <HR> --}}
-        <small class="pl-3"><em>{{this.subject}}</em></small>
-      </a>
-      {{!-- <button class="btn btn-danger float-right delete">x</button> --}}
-      </li>
-      {{/each}}
-    </ul>
->>>>>>> tables
 
   </div>
   {{!-- {{#each burgers}}
@@ -81,10 +42,5 @@
 
 </div>
 
-<<<<<<< HEAD
 {{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
   <script src="/js/index.js"></script>
-=======
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
->>>>>>> tables
