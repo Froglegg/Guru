@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: "Not started"
         }
     });
+    Questions.associate = function(models) {
+        Questions.hasMany(models.responses, {
+            foreignKey: "QuestionId"
+        });
+    };
     // Questions.belongsTo(models.employees);
     return Questions;
 };
