@@ -1,11 +1,17 @@
+// let models = require("./");
+
 module.exports = function(sequelize, DataTypes) {
-  var Questions = sequelize.define("questions", {
-    employeeName: DataTypes.STRING,
-    subject: DataTypes.STRING,
-    body: DataTypes.TEXT,
-    status: DataTypes.STRING
-  });
-  return Questions;
+    var Questions = sequelize.define("questions", {
+        employeeName: DataTypes.STRING,
+        subject: DataTypes.STRING,
+        body: DataTypes.TEXT,
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: "Not started"
+        }
+    });
+    // Questions.belongsTo(models.employees);
+    return Questions;
 };
 
 // FORMELY EXAMPLE.JS (MODEL)
