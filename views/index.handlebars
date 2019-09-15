@@ -5,29 +5,42 @@
   <div class="sidebar slide-left-1">
     <h2>Here is the sidebar</h2>
   </div>
-  <div class="main-view slide-left-2"> 
-            <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each questions}}
-          <li data-id="{{this.employeeName}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.body}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+  <div class="main-view slide-left-2">
+    <h1>{{msg}}</h1>
+    <h2>Ask a Question</h2>
+    <form class="clearfix mb-4" action="POST">
+      <div class="form-group">
+        <label for="question-subject">Subject</label>
+        <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject">
+        <label for="question-category">Category</label>
+        <select class="custom-select" id="question-category">
+          <option selected></option>
+          <option value="Resources">Resources</option>
+          <option value="Repairs">Repairs</option>
+          <option value="Coding">Coding</option>
+        </select>
+        <label for="question-body">Ask your question below</label>
+        <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
+      </div>
+      <button id="submit" class="btn btn-primary float-right">Submit</button>
+    </form>
+    <h3>Examples:</h3>
+    <ul id="questions-list" class="list-group">
+      {{#each questions}}
+      <a href="questions/{{this.id}}" style="text-decoration: none; color:black" data-id="{{this.name}}"
+        class="card mb-2">
+        <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
+          <h5 class="mb-1">John Smith</h4>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1 card-body">{{this.body}}</p>
+        {{!-- <HR> --}}
+        <small class="pl-3"><em>{{this.subject}}</em></small>
+      </a>
+      {{!-- <button class="btn btn-danger float-right delete">x</button> --}}
+      </li>
+      {{/each}}
+    </ul>
 
   </div>
 

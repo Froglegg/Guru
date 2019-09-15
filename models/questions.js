@@ -3,10 +3,19 @@ module.exports = function(sequelize, DataTypes) {
     employeeName: DataTypes.STRING,
     subject: DataTypes.STRING,
     body: DataTypes.TEXT,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    category: DataTypes.STRING  
   });
+  
+  Questions.associate = function(models) {
+    Questions.hasMany(models.responses, {
+      foreignKey: "QuestionId"
+    });
+  };
   return Questions;
 };
+
+  
 
 // FORMELY EXAMPLE.JS (MODEL)
 //-----
