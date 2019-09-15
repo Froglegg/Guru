@@ -1,9 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var Responses = sequelize.define("responses", {
-    responseId: DataTypes.INTEGER,
     employeeName: DataTypes.STRING,
-    questionID: DataTypes.INTEGER,
+    body: DataTypes.TEXT,
   });
+  Responses.associate = function(models) {
+    Responses.belongsTo(models.questions, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Responses;
 };
 

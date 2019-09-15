@@ -1,25 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Questions</h5>
+<div class="main">
+  <div class="topbar slide-up">
+    <h1>Guru</h1>
+  </div>
+  <div class="sidebar slide-left-1">
+    <h2>Here is the sidebar</h2>
+  </div>
+  <div class="main-view slide-left-2">
+    <h1>{{msg}}</h1>
+    {{!-- <div class="container">
+      <div class="row">
+        <div class="col-8 offset-2"> --}}
+    <div id="question" class="card mt-4">
+      <div class="card-body">
+        <h5 class="card-title">Questions</h5>
+        <p>
+          <strong id="question-id" data-id="{{questions.id}}">Question ID</strong>: {{questions.id}}</p>
+        <p>
           <p>
             <strong>Employee Name</strong>: {{questions.employeeName}}</p>
           <p>
-          <p>
-            <strong>Subject</strong>: {{questions.subject}}</p>
-          <p>
             <p>
-            <strong>Body</strong>: {{questions.body}}</p>
-          <p>
+              <strong>Subject</strong>: {{questions.subject}}</p>
             <p>
-            <strong>Status</strong>: {{questions.status}}</p>
-          
-            <a href="/">← Back To Home</a>
-        </div>
+              <p>
+                <strong>Body</strong>: {{questions.body}}</p>
+              <p>
+                <p>
+                  <strong>Status</strong>: {{questions.status}}</p>
+
+                <a href="/">← Back To Home</a>
+                <ul id="responses-list" class="list-group">
+                  {{#each responses}}
+                  <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
+                    <h5 class='mb-1'>John Smith</h4><small>3 days ago</small>
+                  </div>
+                  <p class="mb-1 card-body">{{this.body}}</p>
+                  {{/each}}
+                </ul>
+                <form class="clearfix mb-4" action="POST">
+                  <div class="form-group">
+                    <label for="response-body">Your Answer</label>
+                    <textarea class="form-control" id="response-body" aria-describedby="response-body"></textarea>
+                  </div>
+                  <button id="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
       </div>
     </div>
   </div>
 </div>
+</div>
+</div>
 
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/response.js"></script>

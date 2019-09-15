@@ -7,10 +7,18 @@ module.exports = function(app) {
       res.json(dbResponse);
     });
   });
+  // Get all responses by Question id
+  app.get("/api/response/:id", function(req, res) {
+    db.Response.findAll({ where: { questionId: req.params.id } }).then(function(
+      dbResponse
+    ) {
+      res.json(dbResponse);
+    });
+  });
 
   // Create a new response
   app.post("/api/response", function(req, res) {
-    db.Response.create(req.body).then(function(dbResponse) {
+    db.Responses.create(req.body).then(function(dbResponse) {
       res.json(dbResponse);
     });
   });
