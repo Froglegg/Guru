@@ -1,6 +1,6 @@
 // Get references to page elements
 var $responseBody = $("#response-body");
-var $questionId = $("#question-id");
+var $questionId = $("#question-id").attr("data-id");
 var $submitBtn = $("#submit");
 var $responsesList = $("#responses-list");
 
@@ -12,13 +12,13 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/response",
+      url: "/questions/api/response",
       data: JSON.stringify(newresponse)
     });
   },
   getResponses: function(id) {
     return $.ajax({
-      url: "api/response/" + id,
+      url: "/questions/api/response/" + id,
       type: "GET"
     });
   },
@@ -33,6 +33,7 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshResponses = function() {
   API.getResponses($questionId).then(function(data) {
+    console.log(data);
     var $response = data.map(function(response) {
       var $div = $("<div>")
         .attr({
@@ -45,9 +46,9 @@ var refreshResponses = function() {
         .addClass("mb-1 card-body")
         .html(response.body);
 
-      $div.append($p);
+      $p.append($div);
 
-      return $div;
+      return $p;
     });
 
     $responsesList.empty();
@@ -63,7 +64,7 @@ var handleFormSubmit = function(event) {
   var newresponse = {
     employeeName: "Jake",
     body: $responseBody.val().trim(),
-    QuestionId: $questionId.attr("data-id")
+    questionId: $questionId
   };
 
   if (!newresponse.body) {

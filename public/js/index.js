@@ -34,6 +34,7 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshQuestions = function() {
   API.getQuestions().then(function(data) {
+    console.log(data);
     var $question = data.map(function(question) {
       var $a = $("<a>").attr({
         href: "/questions/" + question.id,
