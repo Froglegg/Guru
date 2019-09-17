@@ -42,33 +42,45 @@ let API = {
     }
 };
 
-// repopulate list
-let refreshQuestions = function() {
-    API.getQuestions().then(function(data) {
-        let $questions = data.map(function(question) {
-            let $a = $("<a>")
-                .text(question.subject)
-                .attr("href", "/questions/" + question.id);
-
-            let $li = $("<li>")
-                .attr({
-                    class: "list-group-item",
-                    "data-id": question.id
-                })
-                .append($a);
-
-            var $button = $("<button>")
-                .addClass("btn btn-danger float-right delete")
-                .text("ｘ");
-
-            $li.append($button);
-
-            return $li;
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshQuestions = function() {
+API.getQuestions().then(function(data) {
+    console.log(data);
+    var $question = data.map(function(question) {
+        var $a = $("<a>").attr({
+            href: "/questions/" + question.id,
+            style: "text-decoration: none; color:black",
+            class: "card mb-2",
+            "data-id": question.id
         });
 
-        $questionList.empty();
-        $questionList.append($questions);
+        var $div = $("<div>")
+            .attr({
+                style: "background-color: #CF5E01",
+                class: "card-header d-flex w-100 justify-content-between"
+            })
+            .html("<h5 class='mb-1'>John Smith</h4><small>3 days ago</small>");
+
+        var $p = $("<p>")
+            .addClass("mb-1 card-body")
+            .html(question.body);
+
+        var $small = $("<small>")
+            .addClass("pl-3")
+            .html("<em>" + question.category + "</em>");
+        $p.append($small);
+        $a.append($div);
+        $a.append($p);
+
+        return $a;
     });
+
+    return $li;
+});
+
+$questionList.empty();
+$questionList.append($questions);
+});
 };
 
 // handleFormSubmit is called whenever we submit a new example

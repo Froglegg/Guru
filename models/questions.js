@@ -1,19 +1,22 @@
-module.exports = function(sequelize, DataTypes) {
-  var Questions = sequelize.define("questions", {
-    employeeName: DataTypes.STRING,
-    subject: DataTypes.STRING,
-    body: DataTypes.TEXT,
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: "Not started"
-    },
-    category: DataTypes.STRING
-  });
+// let models = require("./");
 
-  Questions.associate = function(models) {
-    Questions.hasMany(models.responses, {
-      foreignKey: "questionId"
+module.exports = function(sequelize, DataTypes) {
+
+    var Questions = sequelize.define("questions", {
+        employeeName: DataTypes.STRING,
+        subject: DataTypes.STRING,
+        body: DataTypes.TEXT,
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: "Not started"
+        },
+        category: DataTypes.STRING
     });
-  };
-  return Questions;
+
+    Questions.associate = function(models) {
+        Questions.hasMany(models.responses, {
+            foreignKey: "questionId"
+        });
+    };
+    return Questions;
 };
