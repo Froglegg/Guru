@@ -203,4 +203,9 @@ input::placeholder {
   animation: none !important;
 }
 
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
 /*# sourceMappingURL=styles.css.map */

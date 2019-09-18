@@ -1,9 +1,30 @@
-// var path = require("path");
+var path = require("path");
 var db = require("../models");
 
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = function(app) {
+  app.get("/", function (req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/homepage");
+    }
+    //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+    // });
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+  //
+  app.get("/signup", function (req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/homepage");
+    }
+    //   res.sendFile(path.join(__dirname, "../public/login.html"));
+    // });
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  });
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/homepage", isAuthenticated, function(req, res) {
     db.questions.findAll({}).then(function(dbQuestions) {
       res.render("index", {
         msg: "Welcome!",
