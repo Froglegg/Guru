@@ -9,26 +9,29 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/homepage");
     }
-    //   res.sendFile(path.join(__dirname, "../public/signup.html"));
-    // });
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login", {
+      style: ["normalize.css","bootstrap.min.css", "styles.css", "colors.css"],
+      script: ["jquery.min.js", "bootstrap.min.js"]
+    });
   });
-  //
+  
   app.get("/signup", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/homepage");
     }
-    //   res.sendFile(path.join(__dirname, "../public/login.html"));
-    // });
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.render("signup", {
+      style: ["normalize.css","bootstrap.min.css", "styles.css", "colors.css"],
+      script: ["jquery.min.js", "bootstrap.min.js"]
+    });
   });
   // Load index page
   app.get("/homepage", isAuthenticated, function(req, res) {
     db.questions.findAll({}).then(function(dbQuestions) {
       res.render("index", {
         msg: "Welcome!",
-        style: ["normalize.css", "styles.css", "colors.css"],
+        style: ["normalize.css","bootstrap.min.css", "styles.css", "colors.css"],
+        script: ["jquery.min.js", "bootstrap.min.js"],
         questions: dbQuestions
       });
     });
@@ -45,7 +48,8 @@ module.exports = function(app) {
             res.render("questions", {
               questions: dbQuestions,
               responses: dbResponses,
-              style: ["normalize.css", "styles.css", "colors.css"]
+              style: ["normalize.css","bootstrap.min.css", "styles.css", "colors.css"],
+              script: ["jquery.min.js", "bootstrap.min.js"]
             });
           });
       });

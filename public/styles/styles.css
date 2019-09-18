@@ -28,10 +28,10 @@ p {
   grid-row: topbar-row;
   grid-column: sidebarmain;
   display: flex;
-  background-color: #cf5e01;
+  background-color: #b77835;
   position: fixed;
   width: 100vw;
-  height: 10vh;
+  height: 12vh;
   opacity: 0;
   z-index: 1;
 }
@@ -46,7 +46,9 @@ p {
 .sidebar {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
+ padding: 0 1vw 0 1vw;
   position: fixed;
   grid-row: body;
   grid-column: sidebar;
@@ -56,10 +58,20 @@ p {
 }
 
 .sidebar h2 {
-  text-align: left;
-  margin: auto;
-  padding: 0 1vw 0 1vw;
-  padding-bottom: 10px;
+  margin-top: 15vh;
+  margin-bottom: 2vh;
+}
+
+.sidebar > .icon {
+  margin: 0 auto;
+  cursor: pointer;
+ 
+}
+.icon {
+  transition: all .2s ease-in-out;
+}
+.icon:hover{
+  transform: scale(1.2);
 }
 
 .main-view {
@@ -67,8 +79,8 @@ p {
   flex-direction: column;
   grid-row: body;
   grid-column: main;
-  margin: 0rem 2rem 2rem 2rem;
-  padding: 0 1vw 0 1vw;
+  margin: 2rem 2rem 2rem 2rem;
+  padding: 0 2vw 0 2vw;
   opacity: 0;
 }
 
@@ -125,6 +137,71 @@ input::placeholder {
   line-height: 1.1;
   letter-spacing: 1px;
 }
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+/* icons */
+
+.icon {
+  cursor: pointer;
+}
+/* the floating Guru Avatar */
+
+#guruContainer {
+  margin: 10% auto;
+  width: 100%;
+  animation: floaty 2s infinite;
+  text-align: center;
+}
+
+#guruContainer #guruImage {
+  margin: 50px auto 0;
+}
+
+#guruContainer #shadow {
+ margin:0 auto;
+  background: #252c4921;
+  width: 50%;
+  height: 40px;
+  border-radius: 50%;
+  animation: zoomy 2s infinite;
+}
+
+/* guru Icon */
+
+#guruIcon {
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  animation: floaty 3s infinite;
+}
+
+
+
+/* Animations */
+
+@keyframes floaty {
+  0%,
+  100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes zoomy {
+  0% 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(0.8);
+  }
+}
+
 
 .slide-up {
   -webkit-animation: slide 0.8s forwards;
@@ -203,9 +280,3 @@ input::placeholder {
   animation: none !important;
 }
 
-form.signup,
-form.login {
-  margin-top: 50px;
-}
-
-/*# sourceMappingURL=styles.css.map */
