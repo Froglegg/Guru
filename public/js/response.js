@@ -1,25 +1,24 @@
 // Get references to page elements
-var $questionSubject = $("#question-subject");
-var $questionCategory = $("#question-category");
-var $questionBody = $("#question-body");
+var $responseBody = $("#response-body");
+var $questionId = $("#question-id").attr("data-id");
 var $submitBtn = $("#submit");
-var $questionsList = $("#questions-list");
+var $responsesList = $("#responses-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveQuestion: function(newQuestion) {
+  saveresponse: function(newresponse) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/questions",
-      data: JSON.stringify(newQuestion)
+      url: "/questions/api/response",
+      data: JSON.stringify(newresponse)
     });
   },
-  getQuestions: function() {
+  getResponses: function(id) {
     return $.ajax({
-      url: "api/questions",
+      url: "/questions/api/response/" + id,
       type: "GET"
     });
   },
@@ -32,17 +31,10 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshQuestions = function() {
-  API.getQuestions().then(function(data) {
+var refreshResponses = function() {
+  API.getResponses($questionId).then(function(data) {
     console.log(data);
-    var $question = data.map(function(question) {
-      var $a = $("<a>").attr({
-        href: "/questions/" + question.id,
-        style: "text-decoration: none; color:black",
-        class: "card mb-2",
-        "data-id": question.id
-      });
-
+    var $response = data.map(function(response) {
       var $div = $("<div>")
         .attr({
           style: "background-color: #CF5E01",
@@ -52,20 +44,15 @@ var refreshQuestions = function() {
 
       var $p = $("<p>")
         .addClass("mb-1 card-body")
-        .html(question.body);
+        .html(response.body);
 
-      var $small = $("<small>")
-        .addClass("pl-3")
-        .html("<em>" + question.category + "</em>");
-      $p.append($small);
-      $a.append($div);
-      $a.append($p);
+      $p.append($div);
 
-      return $a;
+      return $p;
     });
 
-    $questionsList.empty();
-    $questionsList.prepend($question);
+    $responsesList.empty();
+    $responsesList.prepend($response);
   });
 };
 
@@ -74,24 +61,21 @@ var refreshQuestions = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var newQuestion = {
-    subject: $questionSubject.val().trim(),
-    body: $questionBody.val().trim(),
-    status: "unsolved",
-    category: $questionCategory.val()
+  var newresponse = {
+    employeeName: "Jake",
+    body: $responseBody.val().trim(),
+    questionId: $questionId
   };
 
-  if (!(newQuestion.subject && newQuestion.body && newQuestion.category)) {
+  if (!newresponse.body) {
     alert("You must complete the entire form!");
     return;
   }
-
-  API.saveQuestion(newQuestion).then(function() {
-    refreshQuestions();
+  console.log(newresponse);
+  API.saveresponse(newresponse).then(function() {
+    refreshResponses();
   });
-  $questionSubject.val("");
-  $questionBody.val("");
-  $questionCategory.val("");
+  $responseBody.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -108,4 +92,4 @@ var handleDeleteBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$questionsList.on("click", ".delete", handleDeleteBtnClick);
+$responsesList.on("click", ".delete", handleDeleteBtnClick);
