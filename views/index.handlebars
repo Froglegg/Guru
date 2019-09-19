@@ -10,7 +10,7 @@
   <div class="main-view slide-left-2">
     <div class="container">
     <div class="row">
-              <h2><span class="member-name"></span></h2>
+              <h2><span id="{{userId}}" class="member-name">{{user}}</span></h2>
 
       <div class="col-md-6 col-md-offset-3">
       </div>
@@ -77,7 +77,13 @@
   $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
+  getResponses: function(id) {
+    return $.ajax({
+      url: "/questions/api/response/" + id,
+      type: "GET"
+    });
+
+  $.get("/api/user_data"+ id).then(function(data) {
     $(".member-name").text(data.name);
     console.log(data);
   });
