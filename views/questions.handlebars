@@ -10,7 +10,87 @@
     {{!-- <div class="container">
       <div class="row">
         <div class="col-8 offset-2"> --}}
-    <div id="question" class="card mt-4">
+
+    <div class="card gedf-card">
+      <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center">
+            {{!-- <div class="mr-2">
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                </div> --}}
+            <div class="ml-2">
+              <div class="h5 m-0">Questions</div>
+              <div class="h7 text-muted">
+                <p id="question-id" data-id="{{questions.id}}">Question ID: {{questions.id}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body" id="intro-card">
+        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+
+
+        <p class="card-text">
+          <p>
+            <strong>Employee Name</strong>: {{questions.employeeName}}</p>
+          <p>
+            <p>
+              <strong>Subject</strong>: {{questions.subject}}</p>
+            <p>
+              <p>
+                <strong>Body</strong>: {{questions.body}}</p>
+              <p>
+                <p>
+                  <strong>Status</strong>: {{questions.status}}</p>
+              </p>
+      </div>
+
+  <div class="media" id="answer-box">
+  <div class="media-body">
+    <h4 class="mt-0 mb-1">Solutions</h4>
+    <ul id="responses-list" class="list-group">
+        {{#each responses}}
+        <div style="background-color: rgba(194, 193, 193, 0.945)" class="card-header d-flex w-100 justify-content-between">
+          <h5 class='mb-1'>John Smith</h4><small>3 days ago</small>
+        </div>
+        <p class="mb-1 card-body">{{this.body}}</p>
+        {{/each}}
+      </ul>
+  </div>
+  
+</div>
+      
+
+      {{!-- <ul id="responses-list" class="list-group">
+        {{#each responses}}
+        <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
+          <h5 class='mb-1'>John Smith</h4><small>3 days ago</small>
+        </div>
+        <p class="mb-1 card-body">{{this.body}}</p>
+        {{/each}}
+      </ul> --}}
+
+      <form class="clearfix mb-4" action="POST">
+        <div class="form-group">
+          <label for="response-body">Your Answer</label>
+          <textarea class="form-control" id="response-body" aria-describedby="response-body"></textarea>
+        </div>
+        <button id="submit" class="btn btn-primary float-right">Submit</button>
+      </form>
+      <div class="card-footer">
+        <a href="/">← Back To Home</a>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    {{!-- <div id="question" class="card mt-4">
       <div class="card-body">
         <h5 class="card-title">Questions</h5>
         <p>
@@ -45,7 +125,7 @@
                   <button id="submit" class="btn btn-primary float-right">Submit</button>
                 </form>
       </div>
-    </div>
+    </div> --}}
   </div>
 </div>
 </div>
