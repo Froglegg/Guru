@@ -3,17 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-
   {{#each style}}
   <link rel="stylesheet" href="/styles/{{this}}" type="text/css">
   {{/each}}
-
+  {{#each script}}
+<script src="/js/{{this}}"></script>  
+{{/each}}
   <title>Home Page</title>
 </head>
 
 <body>
   {{{body}}}
+
 </body>
 
 </html>

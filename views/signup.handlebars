@@ -1,4 +1,4 @@
- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
       </div>
@@ -14,24 +14,26 @@
               </div>
             </div>
             <div class="login-content" style="text-align:center;">
-                <h1>Welcome to Guru</h1>
-        <h2 style="font-size:2em;">Log Within</h2>
-        <form class="login">
+              <h1>Welcome to Guru</h1>
+        <h2 style="font-size:2em;">Begin your Journey</h2>
+        <form class="signup">
           <div class="form-group">
-            {{!-- <label for="exampleInputEmail1">Email address</label> --}}
             <input type="email" class="form-control" id="email-input" placeholder="Email">
           </div>
           <div class="form-group">
-            {{!-- <label for="exampleInputPassword1">Password</label> --}}
             <input type="password" class="form-control" id="password-input" placeholder="Password">
           </div>
-          <button type="submit" class="btn button-1">Login</button>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn button-1">Sign Up</button>
         </form>
         <br />
-        <p>Or sign up <a href="/signup">here</a></p>
-      </div>
+        <p>Or log in <a href="/">here</a></p>
+        </div>
       </div>
     </div>
   </div>
 
-  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/signup.js"></script>
