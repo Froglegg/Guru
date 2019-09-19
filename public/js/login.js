@@ -32,7 +32,7 @@ $(document).ready(function() {
         // window.location.href();
         var id = data.userId;
         console.log(id);
-        window.location.replace(`/homepage/${id}`);
+        window.location.replace(`/homepage${id}`);
 
         // If there's an error, log the error
       })

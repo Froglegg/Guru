@@ -43,7 +43,7 @@ module.exports = function(app) {
       });
     });
   });
-  app.get("/homepage/:id", isAuthenticated, function(req, res) {
+  app.get("/homepage:id", isAuthenticated, function(req, res) {
     db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
       db.questions.findAll({}).then(function(dbQuestions) {
         res.render("index", {
