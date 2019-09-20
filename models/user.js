@@ -43,11 +43,12 @@ module.exports = function(sequelize, DataTypes) {
         );
     });
 
-    // User.associate = function(models) {
-    //     User.hasMany(models.questions, {
-    //         foreignKey: "userQuestionId"
-    //     });
-    // };
+    User.associate = function(models) {
+        User.hasMany(models.questions, {
+            as: 'questions',
+            foreignKey: 'userId'
+        });
+    };
 
     return User;
 };

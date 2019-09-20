@@ -39,11 +39,6 @@ module.exports = function(app) {
             });
     });
     //
-    // Route for logging user out
-    app.get("/logout", function(req, res) {
-        req.logout();
-        res.redirect("/");
-    });
     //
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
@@ -56,16 +51,18 @@ module.exports = function(app) {
         } else {
             // Otherwise send back the user's email and id
             // Sending back a password, even a hashed password, isn't a good idea
-            // res.json({
-            //   email: req.user.email,
-            //   id: req.user.id,
-            //   name: req.user.name
-            // });
+            res.json({
+              email: req.user.email,
+              id: req.user.id,
+              name: req.user.name
+            });
         }
     });
+
     app.get("/api/user_data/:id", function(req, res) {
-        db.User.findAll({ where: { id: req.params.id } }).then(function(dbUser) {
+        db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
             res.json(dbUser);
         });
     });
+
 };

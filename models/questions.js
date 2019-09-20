@@ -1,5 +1,3 @@
-let models = require("./");
-
 module.exports = function(sequelize, DataTypes) {
 
     var Questions = sequelize.define("questions", {
@@ -14,11 +12,6 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Questions.associate = function(models) {
-        // Questions.belongsTo(models.users, {
-        //     foreignKey: {
-        //         allowNull: false
-        //     }
-        // });
         Questions.hasMany(models.responses, {
             foreignKey: "questionId"
         });
@@ -26,15 +19,3 @@ module.exports = function(sequelize, DataTypes) {
 
     return Questions;
 };
-
-
-
-// FORMELY EXAMPLE.JS (MODEL)
-//-----
-// questionId int NOT NULL AUTO_INCREMENT,
-//     employeeId int NOT NULL,
-// 	employeeName varchar(255) NOT NULL,
-// 	subject varchar(255) NOT NULL,
-// 	body int NOT NULL,
-// 	status int NOT NULL,
-//     assignedTo varchar(255) NOT NULL,

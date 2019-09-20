@@ -1,6 +1,8 @@
 <div class="main">
   <div class="topbar slide-up">
     <h1>Guru</h1>
+        <a href="/logout"><button class="btn button-1" style="float:right;margin-right:5vw;margin-top:5vh;">Log Out</button></a>
+
   </div>
   <div class="sidebar slide-left-1">
     <h2>New Inquiry</h2>
@@ -10,7 +12,7 @@
   <div class="main-view slide-left-2">
     <div class="container">
     <div class="row">
-              <h2><span id="{{userId}}" class="member-name">{{user}}</span></h2>
+  <h2>Welcome, <span id="currentUser" class="member-name">{{user}}</span>!</h2>
 
       <div class="col-md-6 col-md-offset-3">
       </div>
@@ -22,8 +24,8 @@
       <a href="questions/{{this.id}}" style="text-decoration: none; color:black" data-id="{{this.name}}"
         class="card mb-2" class="question-card">
         <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
-          <h5 class="mb-1">John Smith</h4>
-            <small>3 days ago</small>
+          <h5 class="mb-1">Asked By: {{this.employeeName}}</h5>
+            <small>Asked on: {{this.createdAt}}</small>
         </div>
         <p class="mb-1 card-body">{{this.body}}</p>
         {{!-- <HR> --}}
@@ -77,11 +79,6 @@
   $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.name);
-    console.log(data);
-  });
-
    let animationState = sessionStorage.getItem('animations');
     console.log(animationState);
     if (animationState === "off") {

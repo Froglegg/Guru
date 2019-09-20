@@ -3,6 +3,7 @@ var $responseBody = $("#response-body");
 var $questionId = $("#question-id").attr("data-id");
 var $submitBtn = $("#submit");
 var $responsesList = $("#responses-list");
+let currentEmployee = $("#currentEmployee").text();
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -22,44 +23,44 @@ var API = {
             type: "GET"
         });
     },
-    deleteExample: function(id) {
+    deleteResponse: function(id) {
         return $.ajax({
-            url: "api/examples/" + id,
+            url: "/questions/api/response/" + id,
             type: "DELETE"
         });
-    },
-    getUserId: function(userId) {
-        return $.ajax({
-            url: "/api/user_data" + id,
-            type: "GET"
-        });
     }
+    // getUserId: function(userId) {
+    //     return $.ajax({
+    //         url: "/api/user_data" + id,
+    //         type: "GET"
+    //     });
+    // }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
+
 var refreshResponses = function() {
-    API.getResponses($questionId).then(function(data) {
-        console.log(data);
-        var $response = data.map(function(response) {
-            var $div = $("<div>")
-                .attr({
-                    style: "background-color: #CF5E01",
-                    class: "card-header d-flex w-100 justify-content-between"
-                })
-                .html("<h5 class='mb-1'>John Smith</h4><small>3 days ago</small>");
+    // API.getResponses($questionId).then(function(data) {
+    //     console.log(data);
+    //     var $response = data.map(function(response) {
+    //         var $div = $("<div>")
+    //             .attr({
+    //                 style: "background-color: #CF5E01",
+    //                 class: "card-header d-flex w-100 justify-content-between"
+    //             })
+    //             .html("<h5 class='mb-1'>John Smith</h4><small>3 days ago</small>");
 
-            var $p = $("<p>")
-                .addClass("mb-1 card-body")
-                .html(response.body);
+    //         var $p = $("<p>")
+    //             .addClass("mb-1 card-body")
+    //             .html(response.body);
 
-            $p.append($div);
+    //         $p.append($div);
 
-            return $p;
-        });
+    //         return $p;
+    //     });
 
-        $responsesList.empty();
-        $responsesList.prepend($response);
-    });
+    //     $responsesList.empty();
+    //     $responsesList.prepend($response);
+    // });
 };
 
 // handleFormSubmit is called whenever we submit a new example
@@ -68,7 +69,7 @@ var handleFormSubmit = function(event) {
     event.preventDefault();
 
     var newresponse = {
-        employeeName: "Jake",
+        employeeName: currentEmployee,
         body: $responseBody.val().trim(),
         questionId: $questionId
     };
@@ -82,6 +83,7 @@ var handleFormSubmit = function(event) {
         refreshResponses();
     });
     $responseBody.val("");
+    location.reload();
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -91,8 +93,8 @@ var handleDeleteBtnClick = function() {
         .parent()
         .attr("data-id");
 
-    API.deleteExample(idToDelete).then(function() {
-        refreshExamples();
+    API.deleteResponse(idToDelete).then(function() {
+        refreshResponses();
     });
 };
 
@@ -102,3 +104,4 @@ $responsesList.on("click", ".delete", handleDeleteBtnClick);
 
 let localUserId = localStorage.getItem("userId");
 $("#goBackButton").attr("href", `/homepage${localUserId}`);
+$("#questionIcon").attr("onClick", `javascript:window.location.href='/homepage${localUserId}'`);
