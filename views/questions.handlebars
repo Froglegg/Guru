@@ -8,17 +8,13 @@
     <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
   </div>
   <div class="main-view slide-left-2">
-    <h1>{{msg}}</h1>
-    {{!-- <div class="container">
-      <div class="row">
-        <div class="col-8 offset-2"> --}}
     <div id="question" class="card mt-4">
       <div class="card-body">
         <p>
           <strong id="question-id" data-id="{{questions.id}}">Question ID</strong>: {{questions.id}}</p>
         <p>
           <p>
-            <strong>Employee Name</strong>: {{questions.employeeName}}</p>
+            <strong>Employee ID</strong>: {{questions.userQuestionId}}</p>
           <p>
             <p>
               <strong>Subject</strong>: {{questions.subject}}</p>
@@ -29,7 +25,7 @@
                 <p>
                   <strong>Status</strong>: {{questions.status}}</p>
 
-                <a href="/homepage">← Inquiry Board</a>
+                <a id="goBackButton" href="">← Inquiry Board</a>
                 <ul id="responses-list" class="list-group">
                   {{#each responses}}
                   <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">

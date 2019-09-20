@@ -1,27 +1,33 @@
-// let models = require("./");
+let models = require("./");
 
 module.exports = function(sequelize, DataTypes) {
 
-  var Questions = sequelize.define("questions", {
-    employeeName: DataTypes.STRING,
-    subject: DataTypes.STRING,
-    body: DataTypes.TEXT,
-    status: { 
+    var Questions = sequelize.define("questions", {
+        employeeName: DataTypes.STRING,
+        subject: DataTypes.STRING,
+        body: DataTypes.TEXT,
+        status: {
             type: DataTypes.STRING,
             defaultValue: "Not started"
         },
-    category: DataTypes.STRING  
-  });
-  
-  Questions.associate = function(models) {
-    Questions.hasMany(models.responses, {
-      foreignKey: "questionId"
+        category: DataTypes.STRING
     });
-  };
-  return Questions;
+
+    Questions.associate = function(models) {
+        // Questions.belongsTo(models.users, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     }
+        // });
+        Questions.hasMany(models.responses, {
+            foreignKey: "questionId"
+        });
+    };
+
+    return Questions;
 };
 
-  
+
 
 // FORMELY EXAMPLE.JS (MODEL)
 //-----
