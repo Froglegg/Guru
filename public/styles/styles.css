@@ -196,6 +196,27 @@ h1 {
   }
   .no-animations * {
     opacity: 1;
+ staging-response
+    transform: translateY(0%);
+  }
+}
+.no-animations * {
+  opacity: 1;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -ms-animation: none !important;
+  -o-animation: none !important;
+  animation: none !important;
+}
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+#intro-card{
+  font-size: 30px;
+}
+/*# sourceMappingURL=styles.css.map */
     -webkit-animation: none !important;
     -moz-animation: none !important;
     -ms-animation: none !important;
@@ -208,3 +229,4 @@ h1 {
     margin-top: 50px;
   }
   
+
