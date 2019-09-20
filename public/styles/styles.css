@@ -374,3 +374,7 @@
         -o-animation: none !important;
         animation: none !important;
     }
+
+    hr {
+        border: 1px solid #ffb602;
+      }

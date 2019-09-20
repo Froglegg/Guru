@@ -12,7 +12,3 @@ module.exports = function(sequelize, DataTypes) {
   };
   return Responses;
 };
-
-// responseId int NOT NULL AUTO_INCREMENT,
-// 	employeeName varchar(255) NOT NULL,
-//     questionId int NOT NULL,
