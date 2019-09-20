@@ -1,8 +1,6 @@
 // let models = require("./");
 
-
 module.exports = function (sequelize, DataTypes) {
-
   var Questions = sequelize.define("questions", {
     employeeName: DataTypes.STRING,
     subject: DataTypes.STRING,
@@ -13,15 +11,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     category: DataTypes.STRING
   });
-
-
   Questions.associate = function (models) {
-
     Questions.hasMany(models.responses, {
       foreignKey: "questionId"
     });
   };
   return Questions;
-
 };
-
