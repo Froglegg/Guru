@@ -27,7 +27,8 @@ module.exports = function(app) {
       script: ["jquery.min.js", "bootstrap.min.js"]
     });
   });
-  // Load index page
+
+  // Load index page, fires on logout
   app.get("/homepage", isAuthenticated, function(req, res) {
     db.questions.findAll({}).then(function(dbQuestions) {
       res.render("index", {
@@ -43,11 +44,12 @@ module.exports = function(app) {
       });
     });
   });
+  
   app.get("/homepage:id", isAuthenticated, function(req, res) {
     db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
       db.questions.findAll({}).then(function(dbQuestions) {
         res.render("index", {
-          userId: dbUser.id,
+          loginUserId: dbUser.id,
           user: dbUser.name,
           questions: dbQuestions,
           style: [
@@ -70,6 +72,7 @@ module.exports = function(app) {
           .findAll({ where: { questionId: req.params.id } })
           .then(function(dbResponses) {
             res.render("questions", {
+              username: req.user.name,
               questions: dbQuestions,
               responses: dbResponses,
               style: [
@@ -92,6 +95,12 @@ module.exports = function(app) {
       script: ["jquery.min.js", "bootstrap.min.js"]
     });
   });
+
+      // Route for logging user out
+      app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/homepage");
+    });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

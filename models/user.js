@@ -1,4 +1,4 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as 
+// Requiring bcrypt for password hashing. Using the bcryptjs version as
 //the regular bcrypt module sometimes causes errors on Windows machines
 var bcrypt = require("bcryptjs");
 
@@ -43,11 +43,12 @@ module.exports = function(sequelize, DataTypes) {
         );
     });
 
-    // User.associate = function(models) {
-    //     User.hasMany(models.questions, {
-    //         foreignKey: "userQuestionId"
-    //     });
-    // };
+    User.associate = function(models) {
+        User.hasMany(models.questions, {
+            as: 'questions',
+            foreignKey: 'userId'
+        });
+    };
 
     return User;
 };

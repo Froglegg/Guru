@@ -19,7 +19,7 @@
         <br />
     <p>Here is some text about our application, define our mission statement here</p>
     <br />
-          <a href="/homepage"><button class="btn button-1" id="return">Return</button></a>
+          <a id="goBackButton" href="/homepage"><button class="btn button-1" id="return">Return</button></a>
 
         
 
@@ -28,4 +28,8 @@
     </div>
   </div>
   
+  <script>
+    let localUserId = localStorage.getItem("userId");
+$("#goBackButton").attr("href", `/homepage${localUserId}`);
+  </script>
 

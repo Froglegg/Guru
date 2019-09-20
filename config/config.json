@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "mia1120",
+        "password": "",
         "database": "guru",
         "host": "localhost",
         "port": 3306,

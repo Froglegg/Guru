@@ -1,10 +1,12 @@
 <div class="main">
   <div class="topbar slide-up">
+        <a id="goBackButton" href=""><button class="btn button-1" style="float:left;margin-left:5vw;margin-top:5vh;">Go Back</button></a>
     <h1>Guru</h1>
+        <a href="/logout"><button class="btn button-1" style="float:right;margin-right:5vw;margin-top:5vh;">Log Out</button></a>
   </div>
   <div class="sidebar slide-left-1">
     <h2>New Inquiry</h2>
-    <div class="icon"><img id="questionIcon" src="/images/question-icon.png"></div>
+    <div class="icon"><img id="questionIcon" src="/images/question-icon.png" onclick=""></div>
     <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
   </div>
   <div class="main-view slide-left-2">
@@ -14,7 +16,7 @@
           <strong id="question-id" data-id="{{questions.id}}">Question ID</strong>: {{questions.id}}</p>
         <p>
           <p>
-            <strong>Employee ID</strong>: {{questions.userQuestionId}}</p>
+            <strong>Asked by: </strong>{{questions.employeeName}}</p>
           <p>
             <p>
               <strong>Subject</strong>: {{questions.subject}}</p>
@@ -25,18 +27,17 @@
                 <p>
                   <strong>Status</strong>: {{questions.status}}</p>
 
-                <a id="goBackButton" href="">← Inquiry Board</a>
                 <ul id="responses-list" class="list-group">
                   {{#each responses}}
                   <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
-                    <h5 class='mb-1'>John Smith</h4><small>3 days ago</small>
+                    <h5 class='mb-1'>By {{this.employeeName}}</h4><p style="font-size: .5em;">Responded on {{this.createdAt}}</>
                   </div>
                   <p class="mb-1 card-body">{{this.body}}</p>
                   {{/each}}
                 </ul>
                 <form class="clearfix mb-4" action="POST">
                   <div class="form-group">
-                    <label for="response-body">Your Answer</label>
+                    <label for="response-body"><span id="currentEmployee">{{username}}</span>'s Answer</label>
                     <textarea class="form-control" id="response-body" aria-describedby="response-body"></textarea>
                   </div>
                   <button id="submit" class="btn button-1 float-right">Submit</button>
@@ -59,4 +60,6 @@
            $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
               $(".main-view").removeClass("slide-left-2").css("opacity", "1");
                   }
-</script>
+
+    
+</script>  
