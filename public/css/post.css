@@ -1,0 +1,94 @@
+/* post a question modal */
+    
+.modal-header {
+    background-color: #b77835;
+    border-bottom: 1px solid #262636;
+}
+
+.modal-body {
+    background-color: #cf5e01;
+}
+
+.modal-body {
+    background-color: #cf5e01;
+}
+
+.modal-body p {
+    font-size: 1.3em;
+    color: black;
+}
+
+.modal-body input {
+    background-color: rgb(212, 212, 212);
+}
+
+.modal-body select {
+    background-color: rgb(212, 212, 212);
+}
+
+.modal-body textarea {
+    background-color: rgb(212, 212, 212);
+}
+/* buttons */
+
+.button-1 {
+    border-radius: 50px;
+    border: 3px solid #262636;
+    color: #262636;
+    background-color: whitesmoke;
+    cursor: pointer;
+    font-family: Lato, Calibri, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin: 10px 15px 10px 15px;
+    text-transform: uppercase;
+    transition: all 1s ease;
+}
+
+.button-1:hover {
+    color: rgb(0, 0, 0);
+    background-color: #ffb602;
+}
+
+li {
+    list-style-type: none;
+}
+
+input {
+    height: 35px;
+    border: 2px #3ab4a0 solid;
+    border-radius: 4px;
+}
+
+input::placeholder {
+    text-align: center;
+    color: #2d3174;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+form.signup,
+form.login {
+    margin-top: 50px;
+}
+/* icons */
+
+.icon {
+    cursor: pointer;
+}
+
+#guruIcon {
+    position: fixed;
+    bottom: 0;
+    animation: floaty 3s infinite;
+    transition: all 2s ease;
+    cursor: pointer;
+}
+
+#guruIcon:hover {
+    transform: scale(1.2);
+}

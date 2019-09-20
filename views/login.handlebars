@@ -1,53 +1,37 @@
-<div id="home">
+ <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Questions:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each questions}}
-          <li data-id="{{this.name}}" class="list-group-item">
-            <a href="questions/{{this.id}}">
-              <div>
-                <h4>{{this.name}}</h4>
+      <div class="col-md-6 mx-auto">
+          <div id="guruContainer">
+              <div id="guruImage">
+                <a href="/information"><img src="images/guru-avatar.png"></a>
+                <div id="shadow"></div>
               </div>
-              <div>{{this.createdAt}}</div>
-              <div>{{this.subject}}</div>
-              {{this.text}}
-            </a>
-            <button class="btn btn-danger float-right delete">x</button>
-          </li>
-          {{/each}}
-        </ul>
-        <h3>Responses:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each responses}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="responses/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-
-
+            </div>
+            <div class="login-content" style="text-align:center;">
+                <h1>Welcome to Guru</h1>
+        <h2 style="font-size:2em;">Log Within</h2>
+        <form class="login">
+          <div class="form-group">
+            {{!-- <label for="exampleInputEmail1">Email address</label> --}}
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            {{!-- <label for="exampleInputPassword1">Password</label> --}}
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <button type="submit" class="btn button-1">Login</button>
+        </form>
+        <br />
+        <p>Or sign up <a href="/signup">here</a></p>
+      </div>
       </div>
     </div>
   </div>
-</div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
