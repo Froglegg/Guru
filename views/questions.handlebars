@@ -1,65 +1,95 @@
 <div class="main">
   <div class="topbar slide-up">
-        <a id="goBackButton" href=""><button class="btn button-1" style="float:left;margin-left:5vw;margin-top:5vh;">Go Back</button></a>
+    <p style="float:left;margin-left:5vw;margin-top:5vh; color:aliceblue;"><a id="goBackButton" href="">Go Back </a></p>
+
     <h1>Guru</h1>
-        <a href="/logout"><button class="btn button-1" style="float:right;margin-right:5vw;margin-top:5vh;">Log Out</button></a>
+    <p style="float:right;margin-right:5vw;margin-top:5vh; color:aliceblue;"><a href="/logout">Log Out </a></p>
+
   </div>
   <div class="sidebar slide-left-1">
-    <h2>New Inquiry</h2>
-    <div class="icon"><img id="questionIcon" src="/images/question-icon.png" onclick=""></div>
-    <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <div class="header-content">
+          <div class="icon">
+            <p id="question-text"><img id="questionIcon" src="/images/question-icon.png">Questions</p>
+          </div>
+          <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
+        </div>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+          <a href="#">Guru Of The Week</a>
+        </li>
+        <li>
+          <a href="#">Wisdoms Forum</a>
+        </li>
+        <li>
+          <a href="#">Company Resources</a>
+        </li>
+      </ul>
+    </nav>
+
   </div>
+
   <div class="main-view slide-left-2">
     <div id="question" class="card mt-4">
       <div class="card-body">
-        <p>
-          <strong id="question-id" data-id="{{questions.id}}">Question ID</strong>: {{questions.id}}</p>
-        <p>
+        
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+          <p class="text-secondary text-center"> {{this.createdAt}}</p>
+        </div>
+        <div class="col-md-10">
+          <p>{{questions.employeeName}}</p>
+          <p id="question-id" data-id="{{questions.id}}">Id: {{questions.id}}</p>
           <p>
-            <strong>Asked by: </strong>{{questions.employeeName}}</p>
-          <p>
-            <p>
-              <strong>Subject</strong>: {{questions.subject}}</p>
-            <p>
-              <p>
-                <strong>Body</strong>: {{questions.body}}</p>
-              <p>
-                <p>
-                  <strong>Status</strong>: {{questions.status}}</p>
+            <a class="float-left" href=""><strong>{{questions.employeeName}}</strong></a>
+            <a class="float-left" href=""><strong>{{questions.subject}}</strong></a>
 
-                <ul id="responses-list" class="list-group">
-                  {{#each responses}}
-                  <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
-                    <h5 class='mb-1'>By {{this.employeeName}}</h4><p style="font-size: .5em;">Responded on {{this.createdAt}}</>
-                  </div>
-                  <p class="mb-1 card-body">{{this.body}}</p>
-                  {{/each}}
-                </ul>
-                <form class="clearfix mb-4" action="POST">
-                  <div class="form-group">
-                    <label for="response-body"><span id="currentEmployee">{{username}}</span>'s Answer</label>
-                    <textarea class="form-control" id="response-body" aria-describedby="response-body"></textarea>
-                  </div>
-                  <button id="submit" class="btn button-1 float-right">Submit</button>
-                </form>
+          </p>
+
+
+          <div class="clearfix"></div>
+          <p>{{questions.body}}</p>
+          <p> <strong>Status</strong>: {{questions.status}}</p>
+          <ul id="responses-list" class="list-group">
+            {{#each responses}}
+            <div style="background-color: rgb(245, 245, 245)" class="card-header d-flex w-100 justify-content-between">
+              <h5 class='mb-1'>By {{this.employeeName}}</h4>
+                <p style="font-size: .5em;">Responded on {{this.createdAt}}</>
+            </div>
+            <p class="mb-1 card-body">{{this.body}}</p>
+            {{/each}}
+          </ul>
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="response-body"><span id="currentEmployee">{{username}}</span> Replied</label>
+              <textarea class="form-control" id="response-body" aria-describedby="response-body"></textarea>
+            </div>
+            <button id="submit" class="btn button-1 float-right">Submit</button>
+          </form>
+
+        </div>
       </div>
+
     </div>
   </div>
 </div>
-</div>
-</div>
 
+
+
+​
 
 </div>
 <script src="/js/response.js"></script>
 <script>
-     let animationState = sessionStorage.getItem('animations');
-    console.log(animationState);
-    if (animationState === "off") {
-        $(".topbar").removeClass("slide-up").css("opacity", "1");
-           $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
-              $(".main-view").removeClass("slide-left-2").css("opacity", "1");
-                  }
+  let animationState = sessionStorage.getItem('animations');
+  console.log(animationState);
+  if (animationState === "off") {
+    $(".topbar").removeClass("slide-up").css("opacity", "1");
+    $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
+    $(".main-view").removeClass("slide-left-2").css("opacity", "1");
+  }
 
-    
-</script>  
+</script>

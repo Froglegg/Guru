@@ -1,102 +1,144 @@
 <div class="main">
   <div class="topbar slide-up">
+
+
+    <p style="float:left;margin-left:5vw;margin-top:5vh; color:aliceblue;"><a href="/logout">Log Out</a></p>
     <h1>Guru</h1>
-        <a href="/logout"><button class="btn button-1" style="float:right;margin-right:5vw;margin-top:5vh;">Log Out</button></a>
+
+    <p style="float:right;margin-right:5vw;margin-top:5vh; color:aliceblue;">Welcome, <span id="currentUser"
+        class="member-name"> {{user}}</span>!</p>
+  </div>
+
+  <div class="sidebar slide-left-1">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <div class="header-content">
+          <div class="icon">
+            <p id="question-text"><img id="questionIcon" src="/images/question-icon.png">Questions</p>
+          </div>
+          <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
+        </div>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+          <a href="#">Guru Of The Week</a>
+        </li>
+        <li>
+          <a href="#">Wisdoms Forum</a>
+        </li>
+        <li>
+          <a href="#">Company Resources</a>
+        </li>
+      </ul>
+    </nav>
 
   </div>
-  <div class="sidebar slide-left-1">
-    <h2>New Inquiry</h2>
-    <div class="icon"><img id="questionIcon" src="/images/question-icon.png"></div>
-    <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
-  </div>
+
   <div class="main-view slide-left-2">
     <div class="container">
-    <div class="row">
-  <h2>Welcome, <span id="currentUser" class="member-name">{{user}}</span>!</h2>
+      <div class="row">
+     
+        <div class="col-md-10">
 
-      <div class="col-md-6 col-md-offset-3">
-      </div>
-    </div>
-  </div>
-    <h3>Board of Inquiries</h3>
-    <ul id="questions-list" class="list-group">
-      {{#each questions}}
-      <a href="questions/{{this.id}}" style="text-decoration: none; color:black" data-id="{{this.name}}"
-        class="card mb-2" class="question-card">
-        <div style="background-color: #CF5E01" class="card-header d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Asked By: {{this.employeeName}}</h5>
-            <small>Asked on: {{this.createdAt}}</small>
-        </div>
-        <p class="mb-1 card-body">{{this.body}}</p>
-        {{!-- <HR> --}}
-        <small class="pl-3"><em>{{this.subject}}</em></small>
-      </a>
-      {{!-- <button class="btn btn-danger float-right delete">x</button> --}}
-      </li>
-      {{/each}}
-    </ul>
+          <div class="card gedf-card list-group" id="questions-list">
+            {{#each questions}}
+            <a href="questions/{{this.id}}" data-id="{{this.name}}" class="card mb-2 question-card">
+              {{!-- <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="mr-2">
+                  <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
 
-  </div>
-
-
-</div>
-<!----------------Modal---------->
-<div id="questionModal" class="modal fade bd-example-modal-lg" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="container-fluid">
-                            <h2 style="font-size:2em;color:black;">Ask a Question</h2>
-    <form class="clearfix mb-4" action="POST">
-      <div class="form-group">
-        <br>
-        <label for="question-subject"><p>Subject</p></label>
-        <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject"><br>
-        <label for="question-category"><p>Category</p></label>
-        <select class="custom-select" id="question-category">
-          <option selected></option>
-          <option value="Resources">Resources</option>
-          <option value="Repairs">Repairs</option>
-          <option value="Coding">Coding</option>
-        </select><br><br>
-        <label for="question-body"><p>What is your question, Padawan?</p></label>
-        <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
-      </div>
-      <button id="submit" class="btn button-1 float-right" data-dismiss="modal">Submit</button>
-    </form>
-                    </div>
                 </div>
-               <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Exit</button></div>
-            </div>
+              </div>
+            </div> --}}
+          </div>
+          <a href=""><strong>{{questions.employeeName}}</strong></a>
+
+          <a class="card-link" href="#">
+            <h5 class="card-title pl-3">{{this.subject}}</h5>
+          </a>
+          <div class="text-muted h7 mb-2"><i class="fa fa-clock-o"></i> {{this.createdAt}}</div>
+
+          <p class="card-text mb-1 card-body">
+            {{this.body}}</p>
+
+          <div class="card-footer">
+
+           
+          </div>
+          </a>
+          </li>
+          {{/each}}
+          </ul>
         </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!----------------Modal---------->
+  <div id="questionModal" class="modal fade bd-example-modal-lg" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="container-fluid">
+              <h2 style="font-size:2em;color:black;">Ask a Question</h2>
+              <form class="clearfix mb-4" action="POST">
+                <div class="form-group">
+                  <br>
+                  <label for="question-subject">
+                    <p>Subject</p>
+                  </label>
+                  <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject"><br>
+                  <label for="question-category">
+                    <p>Category</p>
+                  </label>
+                  <select class="custom-select" id="question-category">
+                    <option selected></option>
+                    <option value="Resources">Resources</option>
+                    <option value="Repairs">Repairs</option>
+                    <option value="Coding">Coding</option>
+                  </select><br><br>
+                  <label for="question-body">
+                    <p>What is your question, Padawan?</p>
+                  </label>
+                  <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
+                </div>
+                <button id="submit" class="btn button-1 float-right" data-dismiss="modal">Submit</button>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+          </div>
+        </div>
+      </div>
     </div>
 
 
-<script>
-  $(document).ready(function() {
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-   let animationState = sessionStorage.getItem('animations');
-    console.log(animationState);
-    if (animationState === "off") {
-        $(".topbar").removeClass("slide-up").css("opacity", "1");
-           $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
-              $(".main-view").removeClass("slide-left-2").css("opacity", "1");
-                  }
-  });
-
-  $("#questionIcon").on("click", () => {
-    $('#questionModal').modal('show');
-  });
-
-  $("#questions-list").on("click", "a", ()=>{
-    // Save data to sessionStorage
-sessionStorage.setItem('animations', 'off');
-  });
-</script>
+    <script>
+      $(document).ready(function () {
+        // This file just does a GET request to figure out which user is logged in
+        // and updates the HTML on the page
+        let animationState = sessionStorage.getItem('animations');
+        console.log(animationState);
+        if (animationState === "off") {
+          $(".topbar").removeClass("slide-up").css("opacity", "1");
+          $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
+          $(".main-view").removeClass("slide-left-2").css("opacity", "1");
+        }
+      });
+      $("#questionIcon").on("click", () => {
+        $('#questionModal').modal('show');
+      });
+      $("#questions-list").on("click", "a", () => {
+        // Save data to sessionStorage
+        sessionStorage.setItem('animations', 'off');
+      });
+    </script>
 
 
-<script src="/js/index.js"></script>
+    <script src="/js/index.js"></script>/script>
