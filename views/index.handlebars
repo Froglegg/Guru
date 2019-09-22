@@ -1,6 +1,6 @@
 <div class="main">
+  {{!-- ***************************Sidebar********************** --}}
   <div class="topbar slide-up">
-
 
     <p style="float:left;margin-left:5vw;margin-top:5vh; color:aliceblue;"><a href="/logout">Log Out</a></p>
     <h1>Guru</h1>
@@ -9,16 +9,17 @@
         class="member-name"> {{user}}</span>!</p>
   </div>
 
-  <div class="sidebar slide-left-1">
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        <div class="header-content">
-          <div class="icon">
-            <p id="question-text"><img id="questionIcon" src="/images/question-icon.png">Questions</p>
+ 
+    <nav id="sidebar" class="sidebar slide-left-1">
+    
+         
+          <div id="questionIcon" class="icon">
+           
+            <p id="question-text"><img src="/images/question-icon.png" class="img img-rounded img-fluid"></p>
           </div>
           <img id="guruIcon" src="/images/guru-icon-3.png" onclick="javascript:window.location.href='/information'">
-        </div>
-      </div>
+       
+     
       <ul class="list-unstyled components">
         <li>
           <a href="#">Guru Of The Week</a>
@@ -32,113 +33,102 @@
       </ul>
     </nav>
 
-  </div>
+ 
+  {{!-- ***************************Post Area********************** --}}
 
   <div class="main-view slide-left-2">
-    <div class="container">
-      <div class="row">
-     
-        <div class="col-md-10">
+    <div class="list-group">
+      <ul id="questions-list">{{#each questions}}
+        <a href="questions/{{this.id}}" data-id="{{this.name}}" class="question-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+                <p class="text-center"><strong> {{this.employeeName}}</strong></p>
 
-          <div class="card gedf-card list-group" id="questions-list">
-            {{#each questions}}
-            <a href="questions/{{this.id}}" data-id="{{this.name}}" class="card mb-2 question-card">
-              {{!-- <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="mr-2">
-                  <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-
-                </div>
               </div>
-            </div> --}}
-          </div>
-          <a href=""><strong>{{questions.employeeName}}</strong></a>
+              <div class="col-md-10">
+                <p class="card-title"><strong>{{this.subject}}</strong></p>
 
-          <a class="card-link" href="#">
-            <h5 class="card-title pl-3">{{this.subject}}</h5>
-          </a>
-          <div class="text-muted h7 mb-2"><i class="fa fa-clock-o"></i> {{this.createdAt}}</div>
-
-          <p class="card-text mb-1 card-body">
-            {{this.body}}</p>
-
-          <div class="card-footer">
-
-           
-          </div>
-          </a>
-          </li>
-          {{/each}}
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!----------------Modal---------->
-  <div id="questionModal" class="modal fade bd-example-modal-lg" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="container-fluid">
-              <h2 style="font-size:2em;color:black;">Ask a Question</h2>
-              <form class="clearfix mb-4" action="POST">
-                <div class="form-group">
-                  <br>
-                  <label for="question-subject">
-                    <p>Subject</p>
-                  </label>
-                  <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject"><br>
-                  <label for="question-category">
-                    <p>Category</p>
-                  </label>
-                  <select class="custom-select" id="question-category">
-                    <option selected></option>
-                    <option value="Resources">Resources</option>
-                    <option value="Repairs">Repairs</option>
-                    <option value="Coding">Coding</option>
-                  </select><br><br>
-                  <label for="question-body">
-                    <p>What is your question, Padawan?</p>
-                  </label>
-                  <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
+                <p class="float-left" style="font-size: .5em;"><em>{{this.createdAt}}</em></p>
+                <div class="clearfix"></div>
+  
+                <p class="card-text card-body">{{this.body}}</p>
+                <div class=" card-footer">
                 </div>
-                <button id="submit" class="btn button-1 float-right" data-dismiss="modal">Submit</button>
-              </form>
+
+              </div>
             </div>
           </div>
-          <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+          </li>
+          <hr>
+          {{/each}}
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!----------------Modal---------->
+<div id="questionModal" class="modal fade bd-example-modal-lg" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="container-fluid">
+            <h2 style="font-size:2em;color:black;">Ask a Question</h2>
+            <form class="clearfix mb-4" action="POST">
+              <div class="form-group">
+                <br>
+                <label for="question-subject">
+                  <p>Subject</p>
+                </label>
+                <input type="text" id="question-subject" class="form-control" aria-describedby="question-subject"><br>
+                <label for="question-category">
+                  <p>Category</p>
+                </label>
+                <select class="custom-select" id="question-category">
+                  <option selected></option>
+                  <option value="Resources">Resources</option>
+                  <option value="Repairs">Repairs</option>
+                  <option value="Coding">Coding</option>
+                </select><br><br>
+                <label for="question-body">
+                  <p>What is your question, Padawan?</p>
+                </label>
+                <textarea class="form-control" id="question-body" aria-describedby="question-body"></textarea>
+              </div>
+              <button id="submit" class="btn button-1 float-right" data-dismiss="modal">Submit</button>
+            </form>
           </div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
         </div>
       </div>
     </div>
+  </div>
 
+  <script>
+    $(document).ready(function () {
+      // This file just does a GET request to figure out which user is logged in
+      // and updates the HTML on the page
+      let animationState = sessionStorage.getItem('animations');
+      console.log(animationState);
+      if (animationState === "off") {
+        $(".topbar").removeClass("slide-up").css("opacity", "1");
+        $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
+        $(".main-view").removeClass("slide-left-2").css("opacity", "1");
+      }
+    });
+    $("#questionIcon").on("click", () => {
+      $('#questionModal').modal('show');
+    });
+    $("#questions-list").on("click", "a", () => {
+      // Save data to sessionStorage
+      sessionStorage.setItem('animations', 'off');
+    });
+  </script>
 
-    <script>
-      $(document).ready(function () {
-        // This file just does a GET request to figure out which user is logged in
-        // and updates the HTML on the page
-        let animationState = sessionStorage.getItem('animations');
-        console.log(animationState);
-        if (animationState === "off") {
-          $(".topbar").removeClass("slide-up").css("opacity", "1");
-          $(".sidebar").removeClass("slide-left-1").css("opacity", "1");
-          $(".main-view").removeClass("slide-left-2").css("opacity", "1");
-        }
-      });
-      $("#questionIcon").on("click", () => {
-        $('#questionModal').modal('show');
-      });
-      $("#questions-list").on("click", "a", () => {
-        // Save data to sessionStorage
-        sessionStorage.setItem('animations', 'off');
-      });
-    </script>
-
-
-    <script src="/js/index.js"></script>/script>
+  <script src="/js/index.js"></script>/script>

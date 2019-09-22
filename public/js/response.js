@@ -29,12 +29,7 @@ var API = {
             type: "DELETE"
         });
     }
-    // getUserId: function(userId) {
-    //     return $.ajax({
-    //         url: "/api/user_data" + id,
-    //         type: "GET"
-    //     });
-    // }
+  
 };
 
 
