@@ -374,3 +374,7 @@
         -o-animation: none !important;
         animation: none !important;
     }
+    
+    .login-body {
+        background-color: #e47c05;
+    }
